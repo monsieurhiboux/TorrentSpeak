@@ -2,11 +2,81 @@
 
 $primary_color : #FD2164;
 $bubble_bot : #F0F0F0;
+$font_family : "helvetica neue";
+
+body{
+  font-family: $font_family;
+  font-size: 16px;
+}
 
 h1{
   color:$primary_color;
 }
 
-body{
-  background:#fff;
+.app_container{
+  margin: 30px 15px 0;
+}
+
+.bubble{
+  padding: 8px 15px;
+  border-radius: 14px;
+  max-width: 50%;
+  display: inline-block;
+}
+
+
+.bubble_bot{
+  display: flex;
+  margin-top: 10px;
+  .bubble_bot_avatar{
+    background: url('img/bubble_bot_avatar.svg');
+    height: 32px;
+    width: 32px;
+    margin-right: 8px;
+  }
+  .bubble_bot_message{
+    border-bottom-left-radius: 8px;
+    background: $bubble_bot;
+  }
+  .bubble_bot_button{
+    margin-left: 40px;
+    border-bottom-left-radius: 8px;
+    border: 1px solid $primary_color;
+    color: $primary_color;
+  }
+  .bubble_after{
+    margin-left: 40px;
+  }
+  .bubble_bot_dl{
+    margin-left: 40px;
+    display: flex;
+    .bubble_bot_dl_icon_dl{
+      background: url('img/icon_bot_dl_done.svg');
+      height: 42px;
+      width: 42px;
+      margin-right: 15px;
+    }
+    .bubble_bot_dl_bar{
+      background: $primary_color;
+      width: 150px;
+      height: 4px;
+      border-radius: 20px;
+      margin:8px 0;
+    }
+    .bubble_bot_dl_display_text{
+      color: #8E8E8E;
+      font-size: 14px;
+    }
+  }
+}
+
+.bubble_user{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 25px;
+  .bubble_user_message{
+    border-top-right-radius: 8px;
+    background: $primary_color;
+    color: #fff;
+  }
 }
