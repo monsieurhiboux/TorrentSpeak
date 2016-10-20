@@ -1,5 +1,6 @@
 @import'_normalize.scss';
 
+@import'_perfect-scrollbar.min.scss';
 $primary_color : #FD2164;
 $bubble_bot : #F0F0F0;
 $font_family : "helvetica neue";
@@ -22,6 +23,7 @@ $top_bar_button_green : #28CA42;
 body{
   font-family: $font_family;
   font-size: 16px;
+  overflow: hidden !important;
 }
 
 
@@ -54,6 +56,15 @@ body{
 
 h1{
   color:$primary_color;
+}
+
+.app_scroll{
+  position: relative;
+  height: 100%;
+}
+
+.ps-scrollbar-y-rail{
+  display: none !important;
 }
 
 .app_container{
