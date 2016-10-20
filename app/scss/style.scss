@@ -3,7 +3,8 @@
 $primary_color : #FD2164;
 $bubble_bot : #F0F0F0;
 $font_family : "helvetica neue";
-$top_bar_color : #F9F9F9;
+$top_bar_color : linear-gradient(rgba(249, 249, 249, 1), rgba(249, 249, 249, 0.88));
+$input_bar_color : linear-gradient(rgba(255, 255, 255, 0.95), #fff);
 $top_bar_button_red : #FF6059;
 $top_bar_button_yellow : #FFC02F;
 $top_bar_button_green : #28CA42;
@@ -23,16 +24,21 @@ body{
   font-size: 16px;
 }
 
+
 .app_bar{
-  background: $top_bar_color;
+  background: linear-gradient(rgba(249, 249, 249, 1), rgba(249, 249, 249, 0.88));
+  z-index: 999;
+  position: fixed;
+  top: 0;
   height: 40px;
+  width: 100%;
   display: flex;
   .button{
     width: 12px;
     height: 12px;
     border-radius: 50%;
     margin-top: 14px;
-    margin-left: 8px;
+    margin-left: 9px;
   }
   .button_red{
     background: $top_bar_button_red;
@@ -51,7 +57,7 @@ h1{
 }
 
 .app_container{
-  margin: 30px 15px 0;
+  margin: 60px 15px;
 }
 
 .bubble{
@@ -124,6 +130,7 @@ h1{
   height: 50px;
   bottom: 0;
   width: 100%;
+  background: $input_bar_color;
   .app_input_icon_tape{
     background: url('img/icon_tape.svg');
     height: 25px;
@@ -137,5 +144,6 @@ h1{
     width: 100%;
     border: 0;
     margin-left: 50px;
+    background: 0;
   }
 }
