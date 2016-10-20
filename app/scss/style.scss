@@ -3,10 +3,37 @@
 $primary_color : #FD2164;
 $bubble_bot : #F0F0F0;
 $font_family : "helvetica neue";
+$top_bar_color : #F9F9F9;
+$top_bar_button_red : #FF6059;
+$top_bar_button_yellow : #FFC02F;
+$top_bar_button_green : #28CA42;
 
 body{
   font-family: $font_family;
   font-size: 16px;
+}
+
+.app_bar{
+  background: $top_bar_color;
+  height: 40px;
+  display: flex;
+  .button{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-top: 14px;
+    margin-left: 8px;
+  }
+  .button_red{
+    background: $top_bar_button_red;
+    margin-left: 15px;
+  }
+  .button_yellow{
+    background: $top_bar_button_yellow;
+  }
+  .button_green{
+    background: $top_bar_button_green;
+  }
 }
 
 h1{
