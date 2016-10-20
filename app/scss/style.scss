@@ -8,6 +8,16 @@ $top_bar_button_red : #FF6059;
 $top_bar_button_yellow : #FFC02F;
 $top_bar_button_green : #28CA42;
 
+*{
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -ms-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  outline: none;
+}
+
 body{
   font-family: $font_family;
   font-size: 16px;
@@ -106,5 +116,26 @@ h1{
     border-top-right-radius: 8px;
     background: $primary_color;
     color: #fff;
+  }
+}
+
+.app_input{
+  position: fixed;
+  height: 50px;
+  bottom: 0;
+  width: 100%;
+  .app_input_icon_tape{
+    background: url('img/icon_tape.svg');
+    height: 25px;
+    width: 25px;
+    margin-top: 10px;
+    margin-left: 10px;
+    position: absolute;
+  }
+  input{
+    height: 50px;
+    width: 100%;
+    border: 0;
+    margin-left: 50px;
   }
 }
