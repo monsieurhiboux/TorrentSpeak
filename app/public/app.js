@@ -38,7 +38,9 @@ let tape = function(time, type){
       $("input").prop('disabled', true)
     }else if (type == 'show') {
       $('.app_input_icon_tape').removeClass('animation-target-3')
-      $('.app_input_icon_tape').addClass('animation-target-3')
+      setTimeout(function () {
+        $('.app_input_icon_tape').addClass('animation-target-3')
+      }, 10);
       $('.app_input').fadeTo( "100" , 1)
       $("input").prop('disabled', false)
       $("input").focus()
@@ -46,27 +48,57 @@ let tape = function(time, type){
   }, time);
 }
 
-setTimeout(function () {
-  $('.app_scroll').perfectScrollbar()
-}, 10)
+$.prototype.enterPressed = function (fn) {
+    $(this).keyup(function (e) {
+        if ((e.keyCode || e.which) == 13) {
+            fn()
+        }
+    })
+}
 
-let socket = io();
+$(function() {
+  setTimeout(function () {
+    $('.app_scroll').perfectScrollbar()
+  }, 10)
 
-bubble('100', 'bubble_bot', 'Hey. Enter your magnet to start your torrent download. 🙂')
-tape('0', 'hide')
-tape('1000', 'show')
-//bubble('300', 'bubble_bot_button', 'Or add torrent file')
-//bubble('500', 'bubble_user_icon_dl', '')
-//bubble('600', 'bubble_bot', 'Thank’s. I work on it.')
-//bubble('700', 'bubble_bot_dl', '')
+  let socket = io();
+
+  tape('0', 'hide')
+  bubble('100', 'bubble_bot', 'Hey. Enter your magnet to start your torrent download. 🙂')
+  tape('300', 'show')
+  //bubble('300', 'bubble_bot_button', 'Or add torrent file')
+  //bubble('500', 'bubble_user_icon_dl', '')
+  //bubble('600', 'bubble_bot', 'Thank’s. I work on it.')
+  //bubble('700', 'bubble_bot_dl', '')
 
 
-//bubble_bot_dl('1500', 'init', '00:50', '0')
-//bubble_bot_dl('1800', 'init', '00:40', '50')
-//bubble_bot_dl('2200', 'init', '00:10', '100')
-//bubble_bot_dl('2500', 'init', '00:01', '149')
-//bubble_bot_dl('2700', 'done', '', '')
+  //bubble_bot_dl('1500', 'init', '00:50', '0')
+  //bubble_bot_dl('1800', 'init', '00:40', '50')
+  //bubble_bot_dl('2200', 'init', '00:10', '100')
+  //bubble_bot_dl('2500', 'init', '00:01', '149')
+  //bubble_bot_dl('2700', 'done', '', '')
 
-//bubble('3000', 'bubble_bot_after', 'Ok, it’s done. I put your file in your Desktop.')
-//bubble('4000', 'bubble_bot_after', 'If you have another torrent, enter your magnet to start your torrent download again. 🙂')
-//bubble('4200', 'bubble_bot_button', 'Or add torrent file')
+  //bubble('3000', 'bubble_bot_after', 'Ok, it’s done. I put your file in your Desktop.')
+  //bubble('4000', 'bubble_bot_after', 'If you have another torrent, enter your magnet to start your torrent download again. 🙂')
+  //bubble('4200', 'bubble_bot_button', 'Or add torrent file')
+
+  $("input").enterPressed(function() {
+      let value_input = $("input").val()
+      if(value_input != ""){
+        tape('0', 'hide')
+        bubble('0', 'bubble_user', $("input").val())
+        $("input").val("")
+        bubble('500', 'bubble_bot', 'Thank’s. I work on it.')
+        bubble('1000', 'bubble_bot_dl', '')
+        bubble_bot_dl('1500', 'init', '00:50', '0')
+        bubble_bot_dl('1800', 'init', '00:40', '50')
+        bubble_bot_dl('2200', 'init', '00:10', '100')
+        bubble_bot_dl('2500', 'init', '00:01', '149')
+        bubble_bot_dl('2700', 'done', '', '')
+        bubble('3000', 'bubble_bot_after', 'Ok, it’s done. I put your file in your Desktop.')
+        bubble('4000', 'bubble_bot_after', 'If you have another torrent, enter your magnet to start your torrent download again. 🙂')
+        tape('4200', 'show')
+      }
+  })
+
+})
