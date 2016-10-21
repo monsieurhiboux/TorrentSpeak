@@ -31,6 +31,21 @@ let bubble_bot_dl = function(time, type, msg, status){
   }, time)
 }
 
+let tape = function(time, type){
+  setTimeout(function () {
+    if(type == 'hide'){
+      $('.app_input').fadeTo( "100" , 0.4)
+      $("input").prop('disabled', true)
+    }else if (type == 'show') {
+      $('.app_input_icon_tape').removeClass('animation-target-3')
+      $('.app_input_icon_tape').addClass('animation-target-3')
+      $('.app_input').fadeTo( "100" , 1)
+      $("input").prop('disabled', false)
+      $("input").focus()
+    }
+  }, time);
+}
+
 setTimeout(function () {
   $('.app_scroll').perfectScrollbar()
 }, 10)
@@ -38,18 +53,20 @@ setTimeout(function () {
 let socket = io();
 
 bubble('100', 'bubble_bot', 'Hey. Enter your magnet to start your torrent download. 🙂')
-bubble('300', 'bubble_bot_button', 'Or add torrent file')
-bubble('500', 'bubble_user_icon_dl', '')
-bubble('600', 'bubble_bot', 'Thank’s. I work on it.')
-bubble('700', 'bubble_bot_dl', '')
+tape('0', 'hide')
+tape('1000', 'show')
+//bubble('300', 'bubble_bot_button', 'Or add torrent file')
+//bubble('500', 'bubble_user_icon_dl', '')
+//bubble('600', 'bubble_bot', 'Thank’s. I work on it.')
+//bubble('700', 'bubble_bot_dl', '')
 
 
-bubble_bot_dl('1500', 'init', '00:50', '0')
-bubble_bot_dl('1800', 'init', '00:40', '50')
-bubble_bot_dl('2200', 'init', '00:10', '100')
-bubble_bot_dl('2500', 'init', '00:01', '149')
-bubble_bot_dl('2700', 'done', '', '')
+//bubble_bot_dl('1500', 'init', '00:50', '0')
+//bubble_bot_dl('1800', 'init', '00:40', '50')
+//bubble_bot_dl('2200', 'init', '00:10', '100')
+//bubble_bot_dl('2500', 'init', '00:01', '149')
+//bubble_bot_dl('2700', 'done', '', '')
 
-bubble('3000', 'bubble_bot_after', 'Ok, it’s done. I put your file is the Desktop.')
-bubble('3100', 'bubble_bot_after', 'If you have another torrent, enter your magnet to start your torrent download again. 🙂')
-bubble('3200', 'bubble_bot_button', 'Or add torrent file')
+//bubble('3000', 'bubble_bot_after', 'Ok, it’s done. I put your file in your Desktop.')
+//bubble('4000', 'bubble_bot_after', 'If you have another torrent, enter your magnet to start your torrent download again. 🙂')
+//bubble('4200', 'bubble_bot_button', 'Or add torrent file')
