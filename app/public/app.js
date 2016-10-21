@@ -18,6 +18,19 @@ let bubble = function(time, type, msg){
     }, time)
 }
 
+let bubble_bot_dl = function(time, type, msg, status){
+  setTimeout(function () {
+    if(type == 'done'){
+      $('.bubble_bot_dl_icon_dl:last').addClass('bubble_bot_dl_icon_dl_done')
+      $('.bubble_bot_dl_display_text:last>span').text('')
+    }else if (type == 'init') {
+      $('.bubble_bot_dl_icon_dl:last').addClass('bubble_bot_dl_icon_dl')
+      $('.bubble_bot_dl_bar:last').css('width' , ''+status+'px')
+      $('.bubble_bot_dl_display_text:last>span').text(msg)
+    }
+  }, time)
+}
+
 setTimeout(function () {
   $('.app_scroll').perfectScrollbar()
 }, 10)
@@ -29,7 +42,14 @@ bubble('300', 'bubble_bot_button', 'Or add torrent file')
 bubble('500', 'bubble_user_icon_dl', '')
 bubble('600', 'bubble_bot', 'Thank’s. I work on it.')
 bubble('700', 'bubble_bot_dl', '')
-bubble('1000', 'bubble_bot_after', 'Ok, it’s done. I put your file is the Desktop.')
-bubble('1100', 'bubble_bot_after', 'If you have another torrent, enter your magnet to start your torrent download again. 🙂')
-bubble('1200', 'bubble_bot_button', 'Or add torrent file')
-bubble('1200', 'bubble_bot_dl', '')
+
+
+bubble_bot_dl('1500', 'init', '00:50', '0')
+bubble_bot_dl('1800', 'init', '00:40', '50')
+bubble_bot_dl('2200', 'init', '00:10', '100')
+bubble_bot_dl('2500', 'init', '00:01', '149')
+bubble_bot_dl('2700', 'done', '', '')
+
+bubble('3000', 'bubble_bot_after', 'Ok, it’s done. I put your file is the Desktop.')
+bubble('3100', 'bubble_bot_after', 'If you have another torrent, enter your magnet to start your torrent download again. 🙂')
+bubble('3200', 'bubble_bot_button', 'Or add torrent file')
