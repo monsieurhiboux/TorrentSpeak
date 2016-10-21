@@ -152,6 +152,12 @@ h1{
     border-top-right-radius: 8px;
     background: $primary_color;
     color: #fff;
+    .bubble_user_icon{
+      background: url('img/icon_file.svg');
+      height: 50px;
+      width: 50px;
+      margin: 10px 20px;
+    }
   }
 }
 
