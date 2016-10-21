@@ -22,6 +22,8 @@ setTimeout(function () {
   $('.app_scroll').perfectScrollbar()
 }, 10)
 
+let socket = io();
+
 bubble('100', 'bubble_bot', 'Hey. Enter your magnet to start your torrent download. 🙂')
 bubble('300', 'bubble_bot_button', 'Or add torrent file')
 bubble('500', 'bubble_user_icon_dl', '')

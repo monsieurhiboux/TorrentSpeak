@@ -1,7 +1,9 @@
 let express = require('express')
 let app = express()
-let sassMiddleware = require('node-sass-middleware');
+let sassMiddleware = require('node-sass-middleware')
 let path = require('path');
+let http = require('http').Server(app);
+let io = require('socket.io')(http)
 
 app.use(sassMiddleware({
     src: __dirname+'/scss',
@@ -19,6 +21,10 @@ app.get('/', (request, response) =>{
   response.render('layouts/app', { title: 'Hey', message: 'Hello there!'})
 })
 
-app.listen(3000, () =>{
-  console.log('Example app listening on port 3000!')
-})
+io.on('connection', function(socket){
+  console.log('a user connected');
+});
+
+http.listen(3000, function(){
+  console.log('listening on *:3000');
+});
