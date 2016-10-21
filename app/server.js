@@ -23,6 +23,14 @@ app.get('/', (request, response) =>{
 
 io.on('connection', function(socket){
   console.log('a user connected');
+  socket.on('add magnet', function(msg){
+    console.log(msg)
+    io.emit('add magnet', msg)
+  })
+
+  socket.on('disconnect', function(){
+    console.log('user disconnected')
+  })
 });
 
 http.listen(3000, function(){});
