@@ -1,6 +1,5 @@
 let express = require('express')
 let app = express()
-let sassMiddleware = require('node-sass-middleware')
 let path = require('path');
 let http = require('http').Server(app);
 let io = require('socket.io')(http)
@@ -11,13 +10,8 @@ let uniqId = function () {
   return Math.round(new Date().getTime() + (Math.random() * 100))
 }
 
-app.use(sassMiddleware({
-    src: __dirname+'/scss',
-    dest: path.join(__dirname, 'public'),
-    debug: true,
-    outputStyle: 'compressed',
-    prefix : '/static'
-}))
+//let sassMiddleware = require('node-sass-middleware')
+//app.use(sassMiddleware({ src: __dirname+'/scss', dest: path.join(__dirname, 'public'), debug: true, outputStyle: 'compressed', prefix : '/static' }))
 
 
 app.use("/static", express.static('public'))
@@ -62,6 +56,8 @@ io.on('connection', function(socket){
 
   socket.on('disconnect', function(){
   })
-});
+})
 
-http.listen(3000, function(){});
+http.listen(3000, function(){})
+
+require('./electron.js')

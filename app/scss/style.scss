@@ -36,6 +36,7 @@ body{
   height: 40px;
   width: 100%;
   display: flex;
+  display: none;
   .button{
     width: 12px;
     height: 12px;
@@ -69,7 +70,7 @@ h1{
 }
 
 .app_container{
-  margin: 60px 15px;
+  margin: 15px 15px 60px;
 }
 
 .bubble{
