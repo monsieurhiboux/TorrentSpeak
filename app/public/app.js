@@ -49,6 +49,10 @@ let tape = function(time, type){
   }, time);
 }
 
+let download = function(dl){
+  window.location.href = dl;
+}
+
 $.prototype.enterPressed = function (fn) {
     $(this).keyup(function (e) {
         if ((e.keyCode || e.which) == 13) {
@@ -103,9 +107,10 @@ $(function() {
     bubble_bot_dl('1000', 'init', 'In progress', '100')
   })
 
-  socket.on('end dl', function(){
+  socket.on('end dl', function(dl){
     bubble_bot_dl('1500', 'done', '', '')
-    bubble('2000', 'bubble_bot_after', 'Ok, it’s done. I put your file in your Desktop.')
+    download(dl)
+    bubble('2000', 'bubble_bot_after', 'Ok, it’s done. I put your file in yours download.')
     bubble('2500', 'bubble_bot_after', 'If you have another torrent, enter your magnet to start your torrent download again. 🙂')
     tape('3000', 'show')
   })

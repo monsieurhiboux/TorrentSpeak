@@ -6,6 +6,6 @@
     "pug": "^2.0.0-beta6",
     "socket.io": "^1.5.0",
     "torrent-stream": "^1.0.3",
-    "username": "^2.2.2"
+    "zip-folder": "^1.0.0"
   }
 }
