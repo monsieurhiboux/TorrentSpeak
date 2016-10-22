@@ -22,6 +22,7 @@ let bubble_bot_dl = function(time, type, msg, status){
   setTimeout(function () {
     if(type == 'done'){
       $('.bubble_bot_dl_icon_dl:last').addClass('bubble_bot_dl_icon_dl_done')
+      $('.bubble_bot_dl_bar:last').css('width' , '150px')
       $('.bubble_bot_dl_display_text:last>span').text('')
     }else if (type == 'init') {
       $('.bubble_bot_dl_icon_dl:last').addClass('bubble_bot_dl_icon_dl')
@@ -95,14 +96,18 @@ $(function() {
   socket.on('add magnet', function(msg){
     bubble('500', 'bubble_bot', 'Thank’s. I work on it.')
     bubble('1000', 'bubble_bot_dl', '')
-    bubble_bot_dl('1500', 'init', '00:50', '0')
-    bubble_bot_dl('1800', 'init', '00:40', '50')
-    bubble_bot_dl('2200', 'init', '00:10', '100')
-    bubble_bot_dl('2500', 'init', '00:01', '149')
-    bubble_bot_dl('2700', 'done', '', '')
-    bubble('3000', 'bubble_bot_after', 'Ok, it’s done. I put your file in your Desktop.')
-    bubble('4000', 'bubble_bot_after', 'If you have another torrent, enter your magnet to start your torrent download again. 🙂')
-    tape('4200', 'show')
+  })
+
+  socket.on('edit dl', function(){
+    bubble_bot_dl('500', 'init', 'In progress', '0')
+    bubble_bot_dl('1000', 'init', 'In progress', '100')
+  })
+
+  socket.on('end dl', function(){
+    bubble_bot_dl('1500', 'done', '', '')
+    bubble('2000', 'bubble_bot_after', 'Ok, it’s done. I put your file in your Desktop.')
+    bubble('2500', 'bubble_bot_after', 'If you have another torrent, enter your magnet to start your torrent download again. 🙂')
+    tape('3000', 'show')
   })
 
 })

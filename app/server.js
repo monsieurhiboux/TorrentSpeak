@@ -4,6 +4,14 @@ let sassMiddleware = require('node-sass-middleware')
 let path = require('path');
 let http = require('http').Server(app);
 let io = require('socket.io')(http)
+let parseTorrent = require('parse-torrent')
+let torrentStream = require('torrent-stream')
+const username = require('username');
+
+username().then(username => {
+    pseudo = username
+    //=> 'sindresorhus'
+});
 
 app.use(sassMiddleware({
     src: __dirname+'/scss',
@@ -12,6 +20,7 @@ app.use(sassMiddleware({
     outputStyle: 'compressed',
     prefix : '/static'
 }))
+
 
 app.use("/static", express.static('public'))
 
@@ -22,14 +31,28 @@ app.get('/', (request, response) =>{
 })
 
 io.on('connection', function(socket){
-  console.log('a user connected');
+
   socket.on('add magnet', function(msg){
-    console.log(msg)
     io.emit('add magnet', msg)
+    let engine = torrentStream(msg,{
+        'connections': 100,
+        'path': '/Users/'+pseudo+'/Desktop'
+    })
+    engine.on('ready', function() {
+        engine.files.forEach(function(file) {
+            file.select()
+        })
+    })
+    engine.on('download', function(){
+      io.emit('edit dl')
+    })
+    engine.on('idle', function(){
+      io.emit('end dl')
+      engine.destroy()
+    })
   })
 
   socket.on('disconnect', function(){
-    console.log('user disconnected')
   })
 });
 
