@@ -27,7 +27,7 @@ app.use("/static", express.static('public'))
 app.set('view engine', 'pug')
 
 app.get('/', (request, response) =>{
-  response.render('layouts/app', { title: 'Hey', message: 'Hello there!'})
+  response.render('layouts/app', { title: 'TorrentSpeak'})
 })
 
 io.on('connection', function(socket){
