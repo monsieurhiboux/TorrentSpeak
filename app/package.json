@@ -45,6 +45,7 @@
   "scripts": {
     "start": "nwbuild -r .",
     "web": "nodemon server.js",
+    "sass": "sass --watch scss:public",
     "pack-mac": "nwbuild -p osx64 -o ./dist/ ."
   }
 }
