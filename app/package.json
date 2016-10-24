@@ -45,6 +45,6 @@
   "scripts": {
     "start": "nwbuild -r .",
     "web": "nodemon server.js",
-    "pack-mac": ""
+    "pack-mac": "nwbuild -p osx64 -o ./dist/ ."
   }
 }
