@@ -8,7 +8,7 @@ $font_family : "helvetica neue";
 $top_bar_color : linear-gradient(rgba(249, 249, 249, 1), rgba(249, 249, 249, 0.88));
 $input_bar_color : linear-gradient(rgba(255, 255, 255, 0.95), #fff);
 $top_bar_button_red : #FF6059;
-$top_bar_button_yellow : #FFC02F;
+$top_bar_button_yellow : rgba(255, 192, 47, 0.27);
 $top_bar_button_green : rgba(40, 202, 66, 0.27);
 
 *{
@@ -38,6 +38,7 @@ body{
   display: flex;
   -webkit-app-region: drag;
   .button{
+    -webkit-app-region: no-drag;
     width: 12px;
     height: 12px;
     border-radius: 50%;
@@ -54,9 +55,6 @@ body{
   }
   .button_yellow{
     background: $top_bar_button_yellow;
-    &:hover{
-      background: darken($top_bar_button_yellow, 20);
-    }
   }
   .button_green{
     background: $top_bar_button_green;
