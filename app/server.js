@@ -10,10 +10,6 @@ let uniqId = function () {
   return Math.round(new Date().getTime() + (Math.random() * 100))
 }
 
-//let sassMiddleware = require('node-sass-middleware')
-//app.use(sassMiddleware({ src: __dirname+'/scss', dest: path.join(__dirname, 'public'), debug: true, outputStyle: 'compressed', prefix : '/static' }))
-
-
 app.use("/static", express.static('public'))
 
 app.set('view engine', 'pug')
