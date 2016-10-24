@@ -61,10 +61,20 @@ $.prototype.enterPressed = function (fn) {
     })
 }
 
+
 $(function() {
   setTimeout(function () {
     $('.app_scroll').perfectScrollbar()
   }, 10)
+
+
+  $(".button_red").click(function() {
+      window.close()
+  })
+
+  $(".button_yellow").click(function() {
+      window.hide()
+  })
 
   let socket = io();
 
