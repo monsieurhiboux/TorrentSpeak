@@ -4,7 +4,7 @@
   "description": "The torrent client that talks to you.",
   "version": "0.0.1",
   "node-main": "./server.js",
-  "main": "http://localhost:3000",
+  "main": "http://localhost:5555",
   "window": {
     "title": "TorrentSpeak",
     "icon": "icon.icns",
