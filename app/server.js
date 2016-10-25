@@ -9,12 +9,15 @@ let zipFolder = require('zip-folder')
 let uniqId = function () {
   return Math.round(new Date().getTime() + (Math.random() * 100))
 }
+let rmdir = require('rimraf');
+
 
 app.use("/static", express.static('public'))
 
 app.set('view engine', 'pug')
 
 app.get('/', (request, response) =>{
+  rmdir('public/files/', function(error){});
   response.render('layouts/app', { title: 'TorrentSpeak'})
 })
 
@@ -40,10 +43,6 @@ io.on('connection', function(socket){
           if(err) {
           } else {
               io.emit('end dl', './static/files/'+id+'.zip')
-              //fs.rmdir('public/files/'+id+'/');
-              setTimeout(function () {
-                //fs.unlink('/public/files/'+id+'.zip');
-              }, 60000);
           }
       })
       engine.destroy()
