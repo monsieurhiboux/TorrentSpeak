@@ -9,7 +9,7 @@ let bubble = function(time, type, msg){
       }else if (type == 'bubble_user_icon_dl') {
         $('.app_container').append('<div class="bubble_user"><div class="bubble bubble_user_message animation-target-2"><div class="bubble_user_icon"></div></div></div>')
       }else if (type == 'bubble_bot_dl') {
-        $('.app_container').append('<div class="bubble_bot animation-target"><div class="bubble bubble_bot_message bubble_bot_dl"><div class="bubble_bot_dl_icon_dl"></div><div class="bubble_bot_dl_display"><div class="bubble_bot_dl_bar"></div><div class="bubble_bot_dl_bar_back"></div><div class="bubble_bot_dl_display_text">Torrent File<span>00:33</span></div></div></div></div>')
+        $('.app_container').append('<div class="bubble_bot animation-target"><div class="bubble bubble_bot_message bubble_bot_dl"><div class="bubble_bot_dl_icon_dl"></div><div class="bubble_bot_dl_display"><div class="bubble_bot_dl_bar"></div><div class="bubble_bot_dl_bar_back"></div><div class="bubble_bot_dl_display_text">Torrent File<span></span></div></div></div></div>')
       }else if (type == 'bubble_bot_after') {
         $('.app_container').append('<div class="bubble_bot"><div class="bubble bubble_bot_message bubble_after animation-target">'+msg+'</div></div>')
       }
@@ -120,7 +120,7 @@ $(function() {
   socket.on('end dl', function(dl){
     bubble_bot_dl('1500', 'done', '', '')
     download(dl)
-    bubble('2000', 'bubble_bot_after', 'Ok, it’s done. I put your file in yours download.')
+    bubble('2000', 'bubble_bot_after', 'Ok, it’s done.')
     bubble('2500', 'bubble_bot_after', 'If you have another torrent, enter your magnet to start your torrent download again. 🙂')
     tape('3000', 'show')
   })
