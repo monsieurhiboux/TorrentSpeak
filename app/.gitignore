@@ -1,3 +1,5 @@
 /node_modules/
 /.sass-cache/
 /dist/
+/public/style.css
+/public/style.css.map
