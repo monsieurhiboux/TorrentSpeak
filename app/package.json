@@ -7,7 +7,7 @@
   "main": "http://localhost:5555",
   "window": {
     "title": "TorrentSpeak",
-    "icon": "icon.icns",
+    "icon": "app.icns",
     "toolbar": false,
     "frame": false,
     "width": 530,
@@ -47,6 +47,6 @@
     "start": "nwbuild -r .",
     "web": "nodemon server.js",
     "sass": "sass --watch scss:public",
-    "pack-mac": "nwbuild -p osx64 -o ./dist/ ."
+    "pack-mac": "nwbuild -p osx64 --macIcns app.icns  -o ./dist/ ."
   }
 }
