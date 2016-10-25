@@ -18,6 +18,7 @@ Run web:
 cd app
 npm run web
 ```
+-> http://localhost:3000/
 
 Run sass:
 ```bash
