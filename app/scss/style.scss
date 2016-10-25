@@ -51,6 +51,15 @@ body{
     margin-left: 15px;
     &:hover{
       background: darken($top_bar_button_red, 20);
+      &:before{
+        background: url('img/icon_close.svg');
+        content: "";
+        width: 8px;
+        height: 8px;
+        position: absolute;
+        margin-top: 2px;
+        margin-left: 2px;
+      }
     }
   }
   .button_yellow{
