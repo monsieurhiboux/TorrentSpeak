@@ -600,18 +600,24 @@ body {
   .app_bar .button_red {
     background: #FF6059;
     margin-left: 15px; }
-    .app_bar .button_red:hover {
-      background: #f20a00; }
-      .app_bar .button_red:hover:before {
-        background: url("img/icon_close.svg");
-        content: "";
-        width: 8px;
-        height: 8px;
-        position: absolute;
-        margin-top: 2px;
-        margin-left: 2px; }
+    .app_bar .button_red:hover:before {
+      background: url("img/icon_close.svg");
+      content: "";
+      width: 8px;
+      height: 8px;
+      position: absolute;
+      margin-top: 2px;
+      margin-left: 2px; }
   .app_bar .button_yellow {
-    background: rgba(255, 192, 47, 0.27); }
+    background: #ffc02f; }
+    .app_bar .button_yellow:hover:before {
+      background: url("img/icon_minimize.svg");
+      content: "";
+      width: 8px;
+      height: 2px;
+      position: absolute;
+      margin-top: 5px;
+      margin-left: 2px; }
   .app_bar .button_green {
     background: rgba(40, 202, 66, 0.27); }
 

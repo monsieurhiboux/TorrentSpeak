@@ -1,3 +1,9 @@
+// Load native UI library
+var gui = require('nw.gui'); //or global.window.nwDispatcher.requireNwGui() (see https://github.com/rogerwang/node-webkit/issues/707)
+
+// Get the current window
+var win = gui.Window.get();
+
 let bubble = function(time, type, msg){
     setTimeout(function () {
       if(type == 'bubble_bot'){
@@ -73,7 +79,7 @@ $(function() {
   })
 
   $(".button_yellow").click(function() {
-      window.hide()
+      win.minimize();
   })
 
   let socket = io();

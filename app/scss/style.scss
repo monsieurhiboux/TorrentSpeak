@@ -8,7 +8,7 @@ $font_family : "helvetica neue";
 $top_bar_color : linear-gradient(rgba(249, 249, 249, 1), rgba(249, 249, 249, 0.88));
 $input_bar_color : linear-gradient(rgba(255, 255, 255, 0.95), #fff);
 $top_bar_button_red : #FF6059;
-$top_bar_button_yellow : rgba(255, 192, 47, 0.27);
+$top_bar_button_yellow : rgba(255, 192, 47, 1);
 $top_bar_button_green : rgba(40, 202, 66, 0.27);
 
 *{
@@ -50,7 +50,6 @@ body{
     background: $top_bar_button_red;
     margin-left: 15px;
     &:hover{
-      background: darken($top_bar_button_red, 20);
       &:before{
         background: url('img/icon_close.svg');
         content: "";
@@ -64,6 +63,17 @@ body{
   }
   .button_yellow{
     background: $top_bar_button_yellow;
+    &:hover{
+      &:before{
+        background: url('img/icon_minimize.svg');
+        content: "";
+        width: 8px;
+        height: 2px;
+        position: absolute;
+        margin-top: 5px;
+        margin-left: 2px;
+      }
+    }
   }
   .button_green{
     background: $top_bar_button_green;
