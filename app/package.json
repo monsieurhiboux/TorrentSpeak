@@ -5,6 +5,7 @@
   "version": "0.0.1",
   "node-main": "./server.js",
   "main": "http://localhost:5555",
+  "node-remote": "http://localhost:5555",
   "window": {
     "title": "TorrentSpeak",
     "toolbar": false,
@@ -24,14 +25,6 @@
   "homepage": "https://github.com/Nicoaedhel/TorrentSpeak",
   "bugs": {
     "url": "https://github.com/Nicoaedhel/TorrentSpeak/issues"
-  },
-  "devDependencies": {
-    "express": "^4.14.0",
-    "parse-torrent": "^5.8.1",
-    "pug": "^2.0.0-beta6",
-    "socket.io": "^1.5.0",
-    "torrent-stream": "^1.0.3",
-    "zip-folder": "^1.0.0"
   },
   "dependencies": {
     "express": "^4.14.0",
