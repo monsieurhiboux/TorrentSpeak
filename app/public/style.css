@@ -631,6 +631,9 @@ h1 {
 .ps-scrollbar-y-rail {
   display: none !important; }
 
+.ps-scrollbar-x-rail {
+  display: none !important; }
+
 .app_container {
   margin: 60px 15px 60px; }
 
