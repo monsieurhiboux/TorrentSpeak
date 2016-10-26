@@ -1,15 +1,15 @@
-let express = require('express')
-let app = express()
-let path = require('path');
-let http = require('http').Server(app);
-let io = require('socket.io')(http)
-let parseTorrent = require('parse-torrent')
-let torrentStream = require('torrent-stream')
-let zipFolder = require('zip-folder')
-let uniqId = function () {
+const express = require('express')
+const app = express()
+const path = require('path');
+const http = require('http').Server(app);
+const io = require('socket.io')(http)
+const parseTorrent = require('parse-torrent')
+const torrentStream = require('torrent-stream')
+const zipFolder = require('zip-folder')
+const uniqId = function () {
   return Math.round(new Date().getTime() + (Math.random() * 100))
 }
-let rmdir = require('rimraf');
+const rmdir = require('rimraf');
 
 
 app.use("/static", express.static('public'))
