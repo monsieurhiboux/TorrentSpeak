@@ -11,7 +11,7 @@ let bubble = function(time, type, msg){
       }else if (type == 'bubble_user_icon_dl') {
         $('.app_container').append('<div class="bubble_user"><div class="bubble bubble_user_message animation-target-2"><div class="bubble_user_icon"></div></div></div>')
       }else if (type == 'bubble_bot_dl') {
-        $('.app_container').append('<div class="bubble_bot animation-target"><div class="bubble bubble_bot_message bubble_bot_dl"><div class="bubble_bot_dl_icon_dl"></div><div class="bubble_bot_dl_display"><div class="bubble_bot_dl_bar"></div><div class="bubble_bot_dl_bar_back"></div><div class="bubble_bot_dl_display_text">Torrent File<span></span></div></div></div></div>')
+        $('.app_container').append('<div class="bubble_bot animation-target"><div class="bubble bubble_bot_message bubble_bot_dl"><div class="bubble_bot_dl_icon_dl"></div><div class="bubble_bot_dl_display"><div class="bubble_bot_dl_bar"></div><div class="bubble_bot_dl_bar_back"></div><div class="bubble_bot_dl_display_text"><span></span></div></div></div></div>')
       }else if (type == 'bubble_bot_after') {
         $('.app_container').append('<div class="bubble_bot"><div class="bubble bubble_bot_message bubble_after animation-target">'+msg+'</div></div>')
       }
@@ -110,9 +110,8 @@ $(function() {
     bubble('1000', 'bubble_bot_dl', '')
   })
 
-  socket.on('edit dl', function(){
-    bubble_bot_dl('500', 'init', 'In progress', '0')
-    bubble_bot_dl('1000', 'init', 'In progress', '100')
+  socket.on('edit dl', function(msg, draw){
+    bubble_bot_dl('500', 'init', msg, draw)
   })
 
   socket.on('error dl', function(){

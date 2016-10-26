@@ -6,11 +6,17 @@ const io = require('socket.io')(http)
 const parseTorrent = require('parse-torrent')
 const torrentStream = require('torrent-stream')
 const zipFolder = require('zip-folder')
+const numeral = require('numeral')
 const uniqId = function () {
   return Math.round(new Date().getTime() + (Math.random() * 100))
 }
 const rmdir = require('rimraf');
-
+const bytes = function(num) {
+  return numeral(num).format('0.0b');
+}
+const simples = function(num) {
+  return numeral(num).format('0');
+}
 
 app.use("/static", express.static('public'))
 
@@ -43,7 +49,11 @@ io.on('connection', function(socket){
             })
         })
         engine.on('download', function(){
-          io.emit('edit dl')
+          downloadLength = engine.swarm.downloaded
+          totalLength = engine.files.reduce(function (prevLength, currFile) {return prevLength + currFile.length}, 0);
+          var draw = simples(downloadLength* 100 / totalLength)
+          var progress = bytes(downloadLength)+'/'+bytes(totalLength)
+          io.emit('edit dl', progress, draw)
         })
         engine.on('idle', function(){
           zipFolder('./public/files/'+id, './public/files/'+id+'.zip', function(err) {
