@@ -11,7 +11,7 @@ let bubble = function(time, type, msg){
       }else if (type == 'bubble_user_icon_dl') {
         $('.app_container').append('<div class="bubble_user"><div class="bubble bubble_user_message animation-target-2"><div class="bubble_user_icon"></div></div></div>')
       }else if (type == 'bubble_bot_dl') {
-        $('.app_container').append('<div class="bubble_bot animation-target"><div class="bubble bubble_bot_message bubble_bot_dl"><div class="bubble_bot_dl_icon_dl"></div><div class="bubble_bot_dl_display"><div class="bubble_bot_dl_bar"></div><div class="bubble_bot_dl_bar_back"></div><div class="bubble_bot_dl_display_text"><span></span></div></div></div></div>')
+        $('.app_container').append('<div class="bubble_bot animation-target"><div class="bubble bubble_bot_message bubble_bot_dl"><div class="bubble_bot_dl_icon_dl"></div><div class="bubble_bot_dl_display"><div class="bubble_bot_dl_bar bubble_bot_dl_bar_center"></div><div class="bubble_bot_dl_bar_back bubble_bot_dl_bar_center"></div><div class="bubble_bot_dl_display_text"><span></span></div></div></div></div>')
       }else if (type == 'bubble_bot_after') {
         $('.app_container').append('<div class="bubble_bot"><div class="bubble bubble_bot_message bubble_after animation-target">'+msg+'</div></div>')
       }
@@ -23,10 +23,14 @@ let bubble = function(time, type, msg){
 let bubble_bot_dl = function(time, type, msg, status){
   setTimeout(function () {
     if(type == 'done'){
+      $('.bubble_bot_dl_bar_back:last').addClass('bubble_bot_dl_bar_center')
+      $('.bubble_bot_dl_bar:last').addClass('bubble_bot_dl_bar_center')
       $('.bubble_bot_dl_icon_dl:last').addClass('bubble_bot_dl_icon_dl_done')
       $('.bubble_bot_dl_bar:last').css('width' , '150px')
       $('.bubble_bot_dl_display_text:last>span').text('')
     }else if (type == 'init') {
+      $('.bubble_bot_dl_bar_back:last').removeClass('bubble_bot_dl_bar_center')
+      $('.bubble_bot_dl_bar:last').removeClass('bubble_bot_dl_bar_center')
       $('.bubble_bot_dl_icon_dl:last').addClass('bubble_bot_dl_icon_dl')
       $('.bubble_bot_dl_bar:last').css('width' , ''+status+'px')
       $('.bubble_bot_dl_display_text:last>span').text(msg)

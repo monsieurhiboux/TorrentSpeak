@@ -678,7 +678,8 @@ h1 {
       width: 150px;
       height: 4px;
       border-radius: 20px;
-      margin: 8px 0; }
+      margin: 8px 0;
+      transition: all 0.4s; }
     .bubble_bot .bubble_bot_dl .bubble_bot_dl_bar {
       background: #0EC275;
       width: 0px;
@@ -687,6 +688,8 @@ h1 {
       margin: 8px 0;
       position: absolute;
       transition: all 0.4s; }
+    .bubble_bot .bubble_bot_dl .bubble_bot_dl_bar_center {
+      margin-top: 18px !important; }
     .bubble_bot .bubble_bot_dl .bubble_bot_dl_display_text {
       color: #8E8E8E;
       font-size: 14px; }
