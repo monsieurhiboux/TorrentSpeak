@@ -2,7 +2,7 @@
   "name": "TorrentSpeak",
   "productName": "TorrentSpeak",
   "description": "The torrent client that talks to you.",
-  "version": "0.2",
+  "version": "0.0.2",
   "node-main": "./server.js",
   "main": "http://localhost:5555",
   "node-remote": "http://localhost:5555",
