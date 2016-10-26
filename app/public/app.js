@@ -81,7 +81,7 @@ $(function() {
   let socket = io();
 
   tape('0', 'hide')
-  bubble('100', 'bubble_bot', 'Hey! Enter the magnet link to start your torrent’s download. =)')
+  bubble('100', 'bubble_bot', 'Hey! Enter the magnet link to start your torrent’s download. <span class="emoji emoji_happy"></span>')
   tape('300', 'show')
   //bubble('300', 'bubble_bot_button', 'Or add torrent file')
   //bubble('500', 'bubble_user_icon_dl', '')
@@ -119,7 +119,7 @@ $(function() {
   })
 
   socket.on('error dl', function(){
-    bubble('500', 'bubble_bot', 'I’m sorry. Your Torrent don’t work. =(')
+    bubble('500', 'bubble_bot', 'I’m sorry. Your Torrent don’t work. <span class="emoji emoji_embarrassed"></span><br /><br />')
     bubble('1000', 'bubble_bot_after', 'If you have another torrent to download, give me its magnet link again.')
     tape('1500', 'show')
   })
@@ -128,7 +128,7 @@ $(function() {
     bubble_bot_dl('1500', 'done', '', '')
     download(dl)
     bubble('2000', 'bubble_bot_after', 'Ok, done !')
-    bubble('2500', 'bubble_bot_after', 'If you have another torrent to download, give me its magnet link again. =)')
+    bubble('2500', 'bubble_bot_after', 'If you have another torrent to download, give me its magnet link again. <span class="emoji emoji_happiness"></span>')
     tape('3000', 'show')
   })
 

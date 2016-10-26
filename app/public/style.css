@@ -637,9 +637,23 @@ h1 {
 .bubble {
   padding: 8px 15px;
   border-radius: 14px;
-  max-width: 50%;
+  max-width: 55%;
   display: inline-block;
   word-wrap: break-word; }
+
+.emoji {
+  height: 20px;
+  width: 20px;
+  position: absolute; }
+
+.emoji_happy {
+  background: url("img/emoji_happy.svg"); }
+
+.emoji_happiness {
+  background: url("img/emoji_happiness.svg"); }
+
+.emoji_embarrassed {
+  background: url("img/emoji_embarrassed.svg"); }
 
 .bubble_bot {
   display: flex;
