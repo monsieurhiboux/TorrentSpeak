@@ -24,29 +24,41 @@ app.get('/', (request, response) =>{
 io.on('connection', function(socket){
 
   socket.on('add magnet', function(msg){
-    io.emit('add magnet', msg)
-    let id = uniqId()
-    let engine = torrentStream(msg,{
-        'connections': 100,
-        'path': './public/files/'+id
-    })
-    engine.on('ready', function() {
-        engine.files.forEach(function(file) {
-            file.select()
+
+    parseTorrent.remote(msg, function (err) {
+
+      if (err) {
+        io.emit('error dl')
+      }
+      else{
+        io.emit('add magnet', msg)
+        let id = uniqId()
+        let engine = torrentStream(msg,{
+            'connections': 100,
+            'path': './public/files/'+id
         })
+        engine.on('ready', function() {
+            engine.files.forEach(function(file) {
+                file.select()
+            })
+        })
+        engine.on('download', function(){
+          io.emit('edit dl')
+        })
+        engine.on('idle', function(){
+          zipFolder('./public/files/'+id, './public/files/'+id+'.zip', function(err) {
+              if(err) {
+              } else {
+                  io.emit('end dl', './static/files/'+id+'.zip')
+              }
+          })
+          engine.destroy()
+        })
+      }
+
     })
-    engine.on('download', function(){
-      io.emit('edit dl')
-    })
-    engine.on('idle', function(){
-      zipFolder('./public/files/'+id, './public/files/'+id+'.zip', function(err) {
-          if(err) {
-          } else {
-              io.emit('end dl', './static/files/'+id+'.zip')
-          }
-      })
-      engine.destroy()
-    })
+
+
   })
 
   socket.on('disconnect', function(){

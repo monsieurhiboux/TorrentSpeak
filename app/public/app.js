@@ -115,6 +115,12 @@ $(function() {
     bubble_bot_dl('1000', 'init', 'In progress', '100')
   })
 
+  socket.on('error dl', function(){
+    bubble('500', 'bubble_bot', 'Je suis désolé. Votre torrent ne fonctionne pas. 😥')
+    bubble('2500', 'bubble_bot_after', 'If you have another torrent, enter your magnet to start your torrent download again. 🙂')
+    tape('3000', 'show')
+  })
+
   socket.on('end dl', function(dl){
     bubble_bot_dl('1500', 'done', '', '')
     download(dl)
