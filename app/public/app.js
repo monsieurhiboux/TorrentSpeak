@@ -116,9 +116,9 @@ $(function() {
   })
 
   socket.on('error dl', function(){
-    bubble('500', 'bubble_bot', 'Je suis désolé. Votre torrent ne fonctionne pas. 😥')
-    bubble('2500', 'bubble_bot_after', 'If you have another torrent, enter your magnet to start your torrent download again. 🙂')
-    tape('3000', 'show')
+    bubble('500', 'bubble_bot', 'I’m sorry. Your Torrent don’t work. 😥')
+    bubble('1000', 'bubble_bot_after', 'If you have another torrent, enter your magnet to start your torrent download again. 🙂')
+    tape('1500', 'show')
   })
 
   socket.on('end dl', function(dl){
