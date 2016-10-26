@@ -3,6 +3,8 @@
 ![capture of TorrentSpeak](design/Desktop.png)
 </center>
 
+TorrentSpeak is a talking torrent client on Mac OSX.
+
 ## Dev :
 
 Install nwbuild, sass, node, npm, yarn, nodemon.
