@@ -1,11 +1,14 @@
+const socket = io();
 
-
-let bubble = function(time, type, msg){
+const bubble = function(time, type, msg){
     setTimeout(function () {
       if(type == 'bubble_bot'){
         $('.app_container').append('<div class="bubble_bot"><div class="bubble_bot_avatar fade-in one"></div><div class="bubble bubble_bot_message animation-target">'+msg+'</div></div>')
       }else if (type == 'bubble_bot_button') {
-        $('.app_container').append('<div class="bubble_bot"><div class="bubble bubble_bot_button animation-target">'+msg+'</div></div>')
+        $('.app_container').append('<div class="bubble_bot"><div class="bubble bubble_bot_button animation-target" id="upload_btn">'+msg+'</div></div>')
+        var siofu = new SocketIOFileUpload(socket)
+        // Configure the three ways that SocketIOFileUpload can read files:
+        document.getElementById("upload_btn").addEventListener("click", siofu.prompt, false)
       }else if (type == 'bubble_user') {
         $('.app_container').append('<div class="bubble_user"><div class="bubble bubble_user_message animation-target-2">'+msg+'</div></div>')
       }else if (type == 'bubble_user_icon_dl') {
@@ -20,7 +23,7 @@ let bubble = function(time, type, msg){
     }, time)
 }
 
-let bubble_bot_dl = function(time, type, msg, status){
+const bubble_bot_dl = function(time, type, msg, status){
   setTimeout(function () {
     if(type == 'done'){
       $('.bubble_bot_dl_bar_back:last').addClass('bubble_bot_dl_bar_center')
@@ -38,7 +41,7 @@ let bubble_bot_dl = function(time, type, msg, status){
   }, time)
 }
 
-let tape = function(time, type){
+const tape = function(time, type){
   setTimeout(function () {
     if(type == 'hide'){
       $('.app_input').fadeTo( "100" , 0.4)
@@ -55,7 +58,7 @@ let tape = function(time, type){
   }, time);
 }
 
-let download = function(dl){
+const download = function(dl){
   window.location.href = dl;
 }
 
@@ -78,12 +81,12 @@ $(function() {
       window.close()
   })
 
-  let socket = io();
+
 
   tape('0', 'hide')
   bubble('100', 'bubble_bot', 'Hey! Enter the magnet link to start your torrent’s download. <div class="emoji emoji_happiness"></div>')
   tape('300', 'show')
-  //bubble('300', 'bubble_bot_button', 'Or add torrent file')
+  bubble('300', 'bubble_bot_button', 'Or add torrent file')
   //bubble('500', 'bubble_user_icon_dl', '')
   //bubble('600', 'bubble_bot', 'Thank’s. I work on it.')
   //bubble('700', 'bubble_bot_dl', '')
@@ -99,6 +102,8 @@ $(function() {
   //bubble('4000', 'bubble_bot_after', 'If you have another torrent, enter your magnet to start your torrent download again. 🙂')
   //bubble('4200', 'bubble_bot_button', 'Or add torrent file')
 
+
+
   $("input").enterPressed(function() {
       let value_input = $("input").val()
       if(value_input != ""){
@@ -112,6 +117,12 @@ $(function() {
   socket.on('add magnet', function(msg){
     bubble('500', 'bubble_bot', 'Thanks. I’m working on it.')
     bubble('1000', 'bubble_bot_dl', '')
+  })
+
+  socket.on('add torrent', function(){
+    bubble('500', 'bubble_user_icon_dl', '')
+    bubble('1000', 'bubble_bot', 'Thanks. I’m working on it.')
+    bubble('1500', 'bubble_bot_dl', '')
   })
 
   socket.on('edit dl', function(msg, draw){

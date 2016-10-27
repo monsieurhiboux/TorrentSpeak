@@ -28,11 +28,13 @@
   },
   "dependencies": {
     "express": "^4.14.0",
+    "fs": "^0.0.1-security",
     "numeral": "^1.5.3",
     "parse-torrent": "^5.8.1",
     "pug": "^2.0.0-beta6",
     "rimraf": "^2.5.4",
     "socket.io": "^1.5.0",
+    "socketio-file-upload": "^0.5.2",
     "torrent-stream": "^1.0.3",
     "zip-folder": "^1.0.0"
   },
