@@ -1,12 +1,13 @@
 const socket = io();
+var siofu = new SocketIOFileUpload(socket)
 
 const bubble = function(time, type, msg){
     setTimeout(function () {
       if(type == 'bubble_bot'){
         $('.app_container').append('<div class="bubble_bot"><div class="bubble_bot_avatar fade-in one"></div><div class="bubble bubble_bot_message animation-target">'+msg+'</div></div>')
       }else if (type == 'bubble_bot_button') {
+        $('#upload_btn').attr('id','none')
         $('.app_container').append('<div class="bubble_bot"><div class="bubble bubble_bot_button animation-target" id="upload_btn">'+msg+'</div></div>')
-        var siofu = new SocketIOFileUpload(socket)
         // Configure the three ways that SocketIOFileUpload can read files:
         document.getElementById("upload_btn").addEventListener("click", siofu.prompt, false)
       }else if (type == 'bubble_user') {
@@ -132,6 +133,7 @@ $(function() {
   socket.on('error dl', function(){
     bubble('500', 'bubble_bot', 'I’m sorry. Your Torrent don’t work. <div class="emoji emoji_embarrassed"></div>')
     bubble('1000', 'bubble_bot_after', 'If you have another torrent to download, give me its magnet link again.')
+    bubble('1200', 'bubble_bot_button', 'Or add torrent file')
     tape('1500', 'show')
   })
 
@@ -140,6 +142,7 @@ $(function() {
     download(dl)
     bubble('2000', 'bubble_bot_after', 'Ok, done ! <div class="emoji emoji_happy"></div>')
     bubble('2500', 'bubble_bot_after', 'If you have another torrent to download, give me its magnet link again.')
+    bubble('2700', 'bubble_bot_button', 'Or add torrent file')
     tape('3000', 'show')
   })
 
