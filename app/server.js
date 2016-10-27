@@ -36,7 +36,6 @@ io.on('connection', function(socket){
   uploader.listen(socket)
   // Do something when a file is saved:
   uploader.on("saved", function(event){
-      console.log(event.file.pathName)
       torrentFile = event.file.pathName
       var msg = parseTorrent(fs.readFileSync(torrentFile))
       parseTorrent.remote(msg, function (err) {
