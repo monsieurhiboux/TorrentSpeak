@@ -121,6 +121,7 @@ $(function() {
   })
 
   socket.on('add torrent', function(){
+    tape('0', 'hide')
     bubble('500', 'bubble_user_icon_dl', '')
     bubble('1000', 'bubble_bot', 'Thanks. I’m working on it.')
     bubble('1500', 'bubble_bot_dl', '')

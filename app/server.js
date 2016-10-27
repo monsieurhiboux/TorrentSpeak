@@ -68,13 +68,13 @@ io.on('connection', function(socket){
                 if(err) {
                 } else {
                     io.emit('end dl', './static/files/'+id+'.zip')
-                    fs.unlink(torrentFile)
                 }
             })
             engine.destroy()
           })
         }
       })
+      fs.unlink(torrentFile)
   });
   // Error handler:
   uploader.on("error", function(event){
