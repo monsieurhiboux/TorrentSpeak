@@ -1,6 +1,6 @@
 # TorrentSpeak
 <center>
-![capture of TorrentSpeak](design/Desktop.png)
+<img src='https://github.com/monsieurhiboux/TorrentSpeak/blob/master/design/Desktop.png?raw=true' />
 </center>
 
 TorrentSpeak is a talking torrent client on Mac OSX.
